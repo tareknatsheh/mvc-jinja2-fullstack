@@ -1,6 +1,6 @@
 import json
 
-def get_data():
-    with open("./models/data.json") as f:
+def get_data(file_path: str):
+    with open(file_path) as f:
         data = json.load(f)
         return data
