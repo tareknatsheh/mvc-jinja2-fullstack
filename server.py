@@ -3,6 +3,11 @@ from controllers import auth, main
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+# TODO
+# Add a testing .json database and implement the model script --> V
+# Implement authentication using bycrpt
+
+
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")

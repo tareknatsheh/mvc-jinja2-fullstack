@@ -1,25 +1,12 @@
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+import models.db as db
 
 router  = APIRouter()
 templates = Jinja2Templates(directory="views")
 
 is_loggedin = True
-sold_items = {
-    "items": [
-        {
-            "date": "2024-04-14",
-            "name": "ball",
-            "cost": 4
-        },
-        {
-            "date": "2024-03-10",
-            "name": "phone",
-            "cost": 300
-        }
-    ]
-}
 
 @router.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -29,13 +16,9 @@ async def home(request: Request):
 
 @router.get("/store/sales")
 def sales_get(request: Request):
-        
+    data = db.get_data()
+    sold_items = data["items"]
 
     return templates.TemplateResponse(
-        request=request, name="sales.html", context={"sold_items": sold_items["items"]}
+        request=request, name="sales.html", context={"sold_items": sold_items}
     )
-
-
-# @router.get("/")
-# def home():
-#     return {"message": "You are at home page"}
