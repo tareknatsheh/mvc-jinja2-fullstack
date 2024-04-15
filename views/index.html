@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>Home page</title>
+</head>
+<body>
+    <h1>Welocme to store dashboard</h1>
+    <div>
+        <ul>
+            {% if not is_loggedin %}
+            <li>
+                <a href="../login">Login</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="../store/sales">Show data</a>
+            </li>
+            <li>
+                <a href="../logout">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    
+</body>
+</html>
