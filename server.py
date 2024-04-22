@@ -8,10 +8,10 @@ from fastapi.staticfiles import StaticFiles
 # Implement authentication using bycrpt --> done
 # Authorization using jwt tokens --> done
 # Store jwt token in cookies (HttpOnly?) --> done
-# Write the README.md
+# Write the README.md --> done
 # Write tests for:
-# login flow
-# logout flow
+# login flow --> done
+# logout flow --> done
 # sales page flow
 # List sales items in a Table not a list
 
@@ -31,9 +31,12 @@ async def custom_404_handler(request: Request, exc):
 
 
 def playground():
-    from models import db
-    data = db.get_data("./models/testing_db_not_valid.json")
-    print(data[0])
+    import requests
+    res = requests.get("http://127.0.0.1:8000/logout")
+
+    print(res.text)
+    print(res.headers)
+    
 
 if __name__ == "__main__":
     playground()

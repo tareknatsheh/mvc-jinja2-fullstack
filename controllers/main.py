@@ -28,6 +28,9 @@ def sales_get(request: Request, role: Annotated[str | None, Depends(auth.verify_
         return RedirectResponse(redirect_url, status_code=status.HTTP_303_SEE_OTHER)
     try:
         data = db.get_data("./models/data.json")
+        if "items" not in data:
+            raise ValueError("Database should have 'items' key")
+        
         sold_items = data["items"]
 
         return templates.TemplateResponse(
