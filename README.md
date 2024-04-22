@@ -17,6 +17,13 @@ pip install -r requirements.txt
 uvicorn server:app --reload
 ```
 
+5. Login:
+You can use the following demo username and password:
+- username: tarek 
+- password: t123
+
+------------
+
 ### Unit Tests
 Run the following:
 ```
