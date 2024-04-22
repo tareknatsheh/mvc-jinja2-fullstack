@@ -1,5 +1,3 @@
-from re import template
-from typing import Annotated
 from fastapi import APIRouter, HTTPException, Request, Form, Response, status
 from fastapi.responses import FileResponse, RedirectResponse
 

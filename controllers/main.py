@@ -8,7 +8,7 @@ import utils.auth as auth
 router  = APIRouter()
 templates = Jinja2Templates(directory="views")
 
-@router.get("/", response_class=HTMLResponse)
+@router.get("/")
 async def home(request: Request, role: Annotated[str | None, Depends(auth.verify_jwt)]):
     print("ROLE is", role)
     
@@ -26,10 +26,13 @@ def sales_get(request: Request, role: Annotated[str | None, Depends(auth.verify_
     if not is_loggedin:
         redirect_url = request.url_for('home') 
         return RedirectResponse(redirect_url, status_code=status.HTTP_303_SEE_OTHER)
-    
-    data = db.get_data("./models/data.json")
-    sold_items = data["items"]
+    try:
+        data = db.get_data("./models/data.json")
+        sold_items = data["items"]
 
-    return templates.TemplateResponse(
-        request=request, name="sales.html", context={"sold_items": sold_items}
-    )
+        return templates.TemplateResponse(
+            request=request, name="sales.html", context={"sold_items": sold_items}
+        )
+    except Exception as error:
+        print(error)
+        return HTMLResponse(content=f"<p>something went wrong - check the logs</p>")
