@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles.css">
-    <title>Document</title>
-</head>
-<body>
-    {% for item in sold_items %}
-        <li>{{ item.name }}</li>
-    {% endfor %}
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/styles.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon_io/favicon-16x16.png">
+        <title>Store Dashboard</title>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../logout">Logout</a></li>
+            </ul>
+        </div>
+        <h2>List of all sold items</h2>
+        <div>
+            {% for item in sold_items %}
+                <li>{{ item.name }}</li>
+            {% endfor %}
+        </div>
+    </body>
 </html>
