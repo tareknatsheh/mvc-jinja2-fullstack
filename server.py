@@ -10,9 +10,10 @@ from fastapi.staticfiles import StaticFiles
 # Store jwt token in cookies (HttpOnly?) --> done
 # Write the README.md --> done
 # Write tests for:
-# login flow --> done
-# logout flow --> done
-# sales page flow
+# - login flow --> done
+# - logout flow --> done
+# - sales page flow
+# Create CI pipeline using Github Actions
 # List sales items in a Table not a list
 
 
